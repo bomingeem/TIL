@@ -62,5 +62,104 @@
 * Step: Step 은 실질적인 배치 처리를 정의하고 제어하는데 필요한 모든 정보가 있는 도메인 객체
 * Tasklet: Step 안에서 수행될 비즈니스 로직 전략의 인터페이스 
 
+```
+@EnableBatchProcessing //배치 기능 활성화
+@SpringBootApplication
+public class BatchApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(BatchApplication.class, args);
+    }
+}
+```
+
+위 코드와 같이 스프링 배치의 기능을 활성화하기 위해서 설정과 관련된 어노테이션 **@EnableBatchProcessing** 을 사용한다  
+
+##### Tasklet 설정
+
+```
+@Slf4j
+public class TutorialTasklet implements Tasklet {
+
+    @Override
+    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+        log.debug("executed tasklet !!");
+        return RepeatStatus.FINISHED;
+    }
+}
+```
+
+
+##### Job 설정
+
+```
+@Configuration
+@RequiredArgsConstructor
+public class TutorialConfig {
+    private final JobBuilderFactory jobBuilderFactory; //Job 빌더 생성용
+    private final StepBuilderFactory stepBuilderFactory; //Step 빌더 생성용
+
+    //JobBuilderFactory를 통해서 tutorialJob을 생성
+    @Bean
+    public Job tutorialJob() {
+        return jobBuilderFactory.get("tutorialJob")
+                .start(tutorialStep()) //Step 설정
+                .build();
+    }
+
+    // StepBuilderFactory를 통해서 tutorialStep을 생성
+    @Bean
+    public Step tutorialStep() {
+        return stepBuilderFactory.get("tutorialStep")
+                .tasklet(new TutorialTasklet()) //Tasklet 설정
+                .build();
+    }
+}
+```
+위 코드와 같이 상단에서 정의한 TutorialTasklet 으로 Step 을 만들고, 만들어진 Step 을 Job 에 등록해주었다
+
+##### Quartz 스케쥴러 적용하기
+
+```
+@EnableScheduling //스케쥴러 기능 활성화
+@EnableBatchProcessing //배치 기능 활성화
+@SpringBootApplication
+public class BatchApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(BatchApplication.class, args);
+    }
+}
+```
+
+##### 스케쥴러 클래스 생성
+
+```
+@Component
+@RequiredArgsConstructor
+public class TutorialScheduler {
+    private final Job job; // tutorialJob
+    private final JobLauncher jobLauncher;
+
+    //5초마다 실행
+    @Scheduled(fixedDelay = 5 * 1000L)
+    public void executeJob () {
+        try {
+            jobLauncher.run(
+                    job,
+                    new JobParametersBuilder()
+                            .addString("datetime", LocalDateTime.now().toString())
+                    .toJobParameters() //job parameter 설정
+            );
+        } catch (JobExecutionException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+}
+```
+
+**@Scheduled** 어노테이션을 이용하여 일정한 주기마다 작성한 Job 이 실행되도록 설정
+
+
+
 
   
