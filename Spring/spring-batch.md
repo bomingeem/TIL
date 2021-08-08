@@ -67,7 +67,9 @@
 * Tasklet: Step 안에서 수행될 비즈니스 로직 전략의 인터페이스 
 
 배치 처리는 읽기 → 처리 → 쓰기 흐름을 갖는다. 아래의 그림은 이러한 배치 처리를 어떻게 구현했는지 배치 처리와 관련된 객체의 관계를 보여준다
-[이미지]
+
+![batch-obejct-relrationship](https://user-images.githubusercontent.com/47099798/128109776-def8dbb4-12a8-4ec1-8442-20faf20e879c.png)
+
 * Job과 Step은 1:M
 * Step과 ItemReader, ItemProcessor, ItemWriter 1:1
 * Job이라는 하나의 큰 일감에 여러 단계(Step)을 두고, 각 단계를 배치의 기본 흐름대로 구성한다
