@@ -90,7 +90,7 @@ String.format("%s worked %.2f" hours.", name, hours);
 예를 들어, assertEquals보다 assertExpectedEqualsActual(expected, actual)이 더 좋다.  
 
 
-### 부수 효가를 일으키지 마라!
+### 부수 효과를 일으키지 마라!
 부수 효과는 거짓말이다. 함수에서 한 가지를 하겠다고 약속하고선 **남몰래** 다른 짓도 하니까.  
 때로는 예상치 못하게 클래스 변수를 수정하거나 함수로 넘어온 인수나 시스템 전역 변수를 수정한다. 많은 경우 시간적인 결함이나 순서 종속성을 초래한다.  
 ```
