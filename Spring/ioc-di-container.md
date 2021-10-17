@@ -1,4 +1,4 @@
-IoC, DI, 그리고 컨테이
+IoC, DI, 그리고 컨테이너
 ===========
 
 ### 제어의 역전 IoC(Inversion of Control)
