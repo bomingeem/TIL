@@ -83,7 +83,7 @@ public class Order {
 
 - 도메인 서비스의 위치는 다른 도메인 구성 요소와 동일한 패키지에 위치한다.
 
-  ![7-domain-package.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a390bc1-394d-4aff-a755-d7d85bde03c6/7-domain-package.png)
+<img width="765" alt="7-domain-package" src="https://user-images.githubusercontent.com/47099798/229337613-77c867e4-a18e-4cea-9a5e-94dcd8dfdda1.png">
 
   ### 도메인 서비스의 인터페이스와 클래스
 
