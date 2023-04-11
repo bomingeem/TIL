@@ -16,13 +16,13 @@
 - 상태를 변경하는 범위와 상태를 조회하는 범위가 정확하게 일치하지 않기 때문에 단일 모델로 두 종류의 기능을 구현하면 모델이 불필요하게 복잡해진다.
 - CQRS는 Command Query Responsibility Segregation의 약자로 상태를 변경하는 명령(Command)을 위한 모델과 상태를 제공하는 조회(Query)를 위한 모델을 분리하는 패턴이다.
 
-![cqrs.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da47bc83-0b0d-4ded-9ba4-12b54435cc4a/cqrs.png)
+![cqrs](https://user-images.githubusercontent.com/47099798/231050723-76bfddc5-80bb-40b7-b33f-3da6f79e7351.png)
 
 - CQRS를 사용하면 각 모델에 맞는 구현 기술을 선택할 수 있다.
     - ex) 명령 모델은 객체 지향에 기반에서 도메일 모델을 구현하기에 적당한 JPA, 조회 모델은 DB 테이블에서 SQL로 데이터를 조회할 때 좋은 MyBatis → **조회 모델을 만든다는 것은 DTO와 어떤 차이일까?**
 - 명령 모델과 조회 모델이 서로 다른 데이터 장소를 사용할 수도 있다.
 
-![cqrs.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/56e3fc3d-2909-4bce-9b00-fe8e846b79e4/cqrs.png)
+![명령모델-조회모델](https://user-images.githubusercontent.com/47099798/231050770-7f38e41e-efe6-4404-8ab0-3dffa3577002.png)
 
 - 명령 모델과 조회 모델이 서로 다른 데이터 저장소를 사용할 경우 데이터 동기화 시점에 따라 구현 방식이 달라질 수 있다.
 - 명령 모델에서 데이터가 바뀌자마자 변경내역을 바로 조회 모델이 반영해야 한다면 동기 이벤트와 글로벌 트랜잭션을 사용해서 실시간으로 동기화 할 수 있지만 전반적인 성능이 떨어지는 단점이 있다.
