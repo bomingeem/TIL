@@ -28,7 +28,7 @@
 - 카탈로그와 추천 BOUNDED CONTEXT 간 통합이 필요한 기능은 다음과 같다.
   - 사용자가 제품 상세 페이지를 볼 때, 보고 있는 상품과 유사한 상품 목록을 하단에 보여준다.
 
-![외부연동.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2f9c30a6-0cd8-41a2-9967-52ef3ffa76e9/%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%83%E1%85%A9%E1%86%BC.png)
+![외부연동](https://user-images.githubusercontent.com/47099798/231065201-4545be42-216e-4abb-a3ad-80fd16751f21.png)
 
 - RecSystemClient는 REST API로부터 데이터를 읽어와 카탈로그 도메인에 맞는 상품 모델로 변환한다.
 - REST API를 호출하는 것은 두 BOUNDED CONTEXT를 직접 통합하는 방법이다.
@@ -54,4 +54,5 @@
 
 - 컨텍스트 맵은 시스템의 전체 구조를 보여준다. 이는 하위 도메인과 일치하지 않는 BOUNDED CONTEXT를 찾아 도메인에 맞게 BOUNDED CONTEXT를 조절하고 사업의 핵심 도메인을 위해 조직 역량을 어떤 BOUNDED CONTEXT에 집중할지 파악하는 데 도움을 준다.
 
-![컨텍스트맵.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b06446b7-9f3c-43c6-9385-be4acac11d30/%E1%84%8F%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A6%E1%86%A8%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%86%E1%85%A2%E1%86%B8.png)
+![컨텍스트맵](https://user-images.githubusercontent.com/47099798/231065234-17fd74c7-5132-40dd-a305-3551a14c70b2.png)
+
