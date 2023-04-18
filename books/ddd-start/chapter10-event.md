@@ -250,7 +250,7 @@ public class EventsResetProcessor {
 
 - 포워더 방식와 API 방식 모두 이벤트 저장소를 사용하므로 이벤트를 저장할 저장소가 필요
 
-  ![저장소.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c93fbe1b-7a46-426f-b10e-e2ca975bc62b/%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%89%E1%85%A9.png)
+![저장소](https://user-images.githubusercontent.com/47099798/232770782-d0559cc6-e1d4-4c79-8b2b-40cdd101ea38.png)
 
 1. EventEntry: 이벤트 저장소에 보관할 데이터
 2. EventStore: 이벤트를 저장하고 조회하는 인터페이스 제공
