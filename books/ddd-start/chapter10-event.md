@@ -245,3 +245,14 @@ public class EventsResetProcessor {
 ![메시징큐](https://user-images.githubusercontent.com/47099798/232769087-6d5cb02e-e43f-4c76-a913-e73571cbc1b8.png)
 
 - RabbitMQ처럼 많이 사용되는 메시징 시스템은 글로벌 트랜잭션 지원과 함께 클러스터와 고가용성을 지원하기 때문에 안정적으로 메시지를 전달할 수 있다는 장점이 있다. ex) Kafka
+
+### 이벤트 저장소 구현
+
+- 포워더 방식와 API 방식 모두 이벤트 저장소를 사용하므로 이벤트를 저장할 저장소가 필요
+
+  ![저장소.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c93fbe1b-7a46-426f-b10e-e2ca975bc62b/%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%89%E1%85%A9.png)
+
+1. EventEntry: 이벤트 저장소에 보관할 데이터
+2. EventStore: 이벤트를 저장하고 조회하는 인터페이스 제공
+3. JdbcEventStore: JDBC를 이용한 EventStore 구현 클래스
+4. EventApi: REST API를 이용해서 이벤트 목록을 제공하는 컨트롤러
